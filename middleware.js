@@ -8,6 +8,9 @@ const pass = () => new Response(null, { headers: { 'x-middleware-next': '1' } })
 export default function middleware(request) {
   const secret = process.env.SITE_PASSWORD;
   if (!secret) return pass();
+  // Atas persetujuan pemilik (16 Nov 2026): berkas suara & gambar di /assets/ tidak dikunci,
+  // karena Safari/iPhone tidak mengirim kata sandi saat memutar audio. Halaman prototipe tetap dikunci.
+  if (new URL(request.url).pathname.startsWith('/assets/')) return pass();
   const auth = request.headers.get('authorization') || '';
   if (auth.startsWith('Basic ')) {
     try {
