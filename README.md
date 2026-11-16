@@ -6,3 +6,4 @@ Platform dibuat oleh PT CaritaHub Peduli Lansia. Direktori anggota dari data pub
 - `index.html` — prototipe interaktif (otomatis pas layar; di HP fokus ke aplikasi anggota)
 - `assets/` — logo & gambar
 - Deploy: Vercel, framework "Other", tanpa build command.
+- Kunci kata sandi: `middleware.js` (HTTP Basic Auth), aktif bila `SITE_PASSWORD` diisi di Vercel → Settings → Environment Variables (Production). Nama pengguna bebas.
